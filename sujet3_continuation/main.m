@@ -80,9 +80,8 @@ par0        = [t0; tf; x0; xf; epsilon_0];
 %------------------------------------------
 %% A REMPLACER
 
-epsilon_f   = 1e-6;
-
-contoptions.lambda_step_initial_rel = 0.5;
+epsilon_f   = 1e-6; 
+contoptions.lambda_step_initial_rel = 0.05;
 
 contoptions.lambda_step_min_rel     = 1e-6;
 contoptions.alpha                   = 5e-1;
@@ -90,7 +89,7 @@ contoptions.iteration_max           = 1e3;
 contoptions.norme_sfun_max          = 1e-3;
 
 %------------------------------------------
-epsilons = [epsilon_0 epsilon_f]; %Choix des epsilons pour l'affichage
+epsilons = [epsilon_0 0.5  0.1 epsilon_f]; %Choix des epsilons pour l'affichage
 %------------------------------------------
 
 %% FIN A REMPLACER
