@@ -30,5 +30,8 @@ function [ tout, z ]  = exphvfun(tspan, z0, options, par, iarc)
 %-------------------------------------------------------------------------------------------
 
 %% A REMPLACER
-tout = linspace(tspan(1), tspan(2), 100);
-z    = z0 * ones(1,length(tout));
+% tout = linspace(tspan(1), tspan(2), 100);
+% z    = z0 * ones(1,length(tout));
+[Tout,Z] = ode45(@(t,z)hvfun(t,z,par,iarc),tspan,z0,options);
+z = Z';
+tout = Tout';

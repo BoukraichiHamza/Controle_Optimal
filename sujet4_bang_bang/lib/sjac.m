@@ -52,11 +52,14 @@ switch derivativeChoice
         end;
 
         %% A REMPLACER
-        jac = zeros(length(y), length(y));
+        jac = finiteDiff(@(y)sfun(y,options,par),y,eye(length(y)),t);
 
-    case {'ind', 'eqvar'}
-
-        error('On ne peut choisir que finite pour le calcul de la jacobienne !');
+    case {'ind'}
+        [~,~,jacaux] = expdhvfun([par(1); par(2)] , [par(3);y] , [zeros(length(y)) ; eye(length(y))] , options, par, derivativeChoice);
+        jac = jacaux(1:size(par(3)),end);
+        
+    case{'eqvar'}
+        error('On ne peut pas choisir eqvar pour le calcul de la jacobienne !');
 
     otherwise
         error('Choix ne peut prendre les valeurs : ''finite'', ''eqvar'' ou ''ind''');

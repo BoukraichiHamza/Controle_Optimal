@@ -31,4 +31,5 @@ x  = z(1:n);
 p  = z(n+1:2*n);
 
 %% A REMPLACER
-hv = [0.0 ; 0.0];
+u = control(t,z,par,iarc);
+hv = [-x+u ; p];

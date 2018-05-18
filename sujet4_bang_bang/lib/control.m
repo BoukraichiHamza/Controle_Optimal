@@ -30,4 +30,7 @@ x  = z(1:n);
 p  = z(n+1:2*n);
 
 %% A REMPLACER
-u = 0.0;
+u = 1.0;
+if iarc == 1
+    u = 0.0;
+end

@@ -30,4 +30,7 @@ function dfun = finiteDiff(fun,x,h,t)
 %
 %-------------------------------------------------------------------------------------------
 
-dfun = 0.0;
+dfun = [];
+for i = 1:size(h,2)
+    dfun = [dfun (fun(x+t*h(:,i))-fun(x))/t ];
+end

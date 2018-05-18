@@ -69,12 +69,12 @@ options.optimoptions    = optionsNLE;
 disp(tirets);
 disp('Exercice 4.1 : Tir multiple et visualisation des résultats.');
 
-derivativeChoice = 'finite';
+derivativeChoice = 'ind';
 
 %--------------------------------
-p0  = ;
-t1  = ;
-z1  = [;];
+p0  = 0.2707;
+t1  = 1.307;
+z1  = [0;1];
 %--------------------------------
 
 y0  = [p0; t1; z1];
