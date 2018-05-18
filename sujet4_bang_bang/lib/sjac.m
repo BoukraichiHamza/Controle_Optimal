@@ -55,8 +55,12 @@ switch derivativeChoice
         jac = finiteDiff(@(y)sfun(y,options,par),y,eye(length(y)),t);
 
     case {'ind'}
-        [~,~,jacaux] = expdhvfun([par(1); par(2)] , [par(3);y] , [zeros(length(y)) ; eye(length(y))] , options, par, derivativeChoice);
-        jac = jacaux(1:size(par(3)),end);
+        [~,~,bloc1aux] = expdhvfun([par(1); par(2)] , [par(3);y] , [zeros(length(y)) ; eye(length(y))] , options, par, derivativeChoice,2);
+        bloc1 = bloc1aux(1:size(par(3)),end);
+        [~,~,bloc2aux] = expdhvfun([par(1); par(2)] , [par(3);y] , [zeros(length(y)) ; eye(length(y))] , options, par, derivativeChoice,2);
+        bloc2 = bloc2aux(1:size(par(3)),end);
+        [~,~,bloc3aux] = expdhvfun([par(1); par(2)] , [par(3);y] , [zeros(length(y)) ; eye(length(y))] , options, par, derivativeChoice,1);
+        bloc3 = bloc3aux(1:size(par(3)),end);
         
     case{'eqvar'}
         error('On ne peut pas choisir eqvar pour le calcul de la jacobienne !');
