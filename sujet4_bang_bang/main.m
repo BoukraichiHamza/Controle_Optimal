@@ -69,7 +69,7 @@ options.optimoptions    = optionsNLE;
 disp(tirets);
 disp('Exercice 4.1 : Tir multiple et visualisation des résultats.');
 
-derivativeChoice = 'ind';
+derivativeChoice = 'finite';
 
 %--------------------------------
 p0  = 0.2707;
@@ -82,7 +82,6 @@ y0  = [p0; t1; z1];
 par = [t0; tf; x0; xf];
 
 [ ysol, ssol, nfev, niter, flag] = ssolve(y0,options,par,derivativeChoice);
-
 p0 = ysol(1);
 t1 = ysol(2);
 z1 = ysol(3:4);
