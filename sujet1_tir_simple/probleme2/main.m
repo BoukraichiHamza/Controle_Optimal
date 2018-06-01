@@ -120,8 +120,8 @@ disp(tirets);
 disp('Exercice 1.5 : convergence de la méthode de tir');
 
 %% Valeur initiale pour la méthode de tir : essayer 0.5 et 1.5
-%y0 = 0.5;
-y0 = 1.5;
+y0 = 0.5;
+%y0 = 1.5;
 
 [ ysol, ssol, nfev, niter, flag] = ssolve(y0,options,par);
 

@@ -100,7 +100,7 @@ for i=1:Neps
     %
     % Essayer y0 = 0.37, 0.38 et 0.39. Valeur par defaut : y0 = 0.2715
     %
-    y0               = 0.38;
+    y0               = 0.37;
     derivativeChoice = 'finite';
 
     [ ysol, ssol, nfev, niter, flag] = ssolve(y0,options,par,derivativeChoice); ysols(i) = ysol; ssols(i) = ssol;

@@ -39,19 +39,20 @@ fprintf('\nStep 1: parameters initialization\n');
     t1      = 2.0;
     tf      = 4.0;
     p0      = [0.1 0.1]';
-    yGuess  = [t1 tf p0(1) p0(2)]'
+    yGuess  = [t1 tf p0(1) p0(2)]';
     [tout,z,flag] = exphvfun([t0 t1],[q0;p0],[t0 t1 tf],options,par);
     z1      = z(:,end);
     yGuess  = [yGuess ; z1];
-
+   
 %-------------------------------------------------------------------------------------------------------------%
 fprintf('\nStep 2: shooting\n');
-
+    
     [y0,ssol,nfev,njev,flag] = ssolve(yGuess,options,par);
+    y0 = y0';
     t1   = y0(1);
     tf   = y0(2);
     p0f  = y0(3:4);
-
+    
     % --------- %
     % Attention il faut donner le vecteur ti des instants initial, de commutations et final,
     % à exphvfun et control, car il y a plusieurs arcs.

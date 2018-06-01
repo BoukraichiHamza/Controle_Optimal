@@ -23,11 +23,12 @@ set(0,  'defaultaxesfontsize'   ,  14     , ...
 
 addpath(['libhampath/']);
 ysol = 0.5;
+figure;
 epsilons = [ 1 0.5 0.1 1e-6];
 color = [ 'b' 'y' 'r' 'k'];
-figure;
-for i=1:size(epsilons,2)
-    epsilon = epsilons(i);
+for i = 1:4
+    epsilon=epsilons(i)
+
     %-------------------------------------------------------------------------------------------------------------%
     fprintf('\nStep 1: parameters initialization\n');
     
@@ -58,14 +59,19 @@ for i=1:size(epsilons,2)
     tspan = linspace(t0,tf,101);
     [tout,z,flag] = exphvfun(tspan,[x0;p0sol],options,par);
     
-    subplot(1,4,1);plot(tout,z(  1,:),'b');xlabel('t');ylabel('x(t)');   drawnow; title('State solution');
+    subplot(1,4,1);plot(tout,z(  1,:),color(i));xlabel('t');ylabel('x(t)');   drawnow; title('State solution');
     hold on
-    subplot(1,4,2);plot(tout,z(n+1,:),'b');xlabel('t');ylabel('p_x(t)'); drawnow; title('Co-state solution');
+    legend('1','0.5','0.1','1e-6')
+    subplot(1,4,2);plot(tout,z(n+1,:),color(i));xlabel('t');ylabel('p_x(t)'); drawnow; title('Co-state solution');
     hold on
+    legend('1','0.5','0.1','1e-6')
+
     % Control
     u       = control(tout,z,par);
     subplot(1,4,[3 4]);plot(tout,u,color(i));xlabel('t');ylabel('u(t)'); drawnow; title('Control');
     hold on
+    legend('1','0.5','0.1','1e-6')
 end
+
 
 
